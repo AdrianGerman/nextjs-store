@@ -1,10 +1,16 @@
-/* eslint-disable @next/next/no-img-element */
 import styles from "./Description.module.sass";
+import Image from "next/image";
 
 export const Description = () => {
   return (
     <section className={styles.Description}>
-      <img src="/images/description.jpeg" alt="products marketplace" />
+      <Image
+        src="/images/description.jpeg"
+        alt="products marketplace"
+        width={500}
+        height={300}
+        // priority={false}
+      />
       <div className={styles.Description__text}>
         <h2>Trae el futuro hoy</h2>
         <p>
