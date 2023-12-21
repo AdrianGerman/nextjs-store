@@ -1,5 +1,4 @@
 .Header__list {
-  font-family: "Ubuntu";
   display: flex;
   flex-flow: row nowrap;
   list-style: none;
