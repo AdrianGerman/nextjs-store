@@ -2,16 +2,20 @@ import Image from "next/image";
 import styles from "./MainProducts.module.sass";
 
 const getProducts = async () => {
-  const response = await fetch(
-    `${process.env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json`,
-    {
-      headers: new Headers({
-        "X-Shopify-Access-Token": process.env.SHOPIFY_API_KEY || "",
-      }),
-    }
-  );
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(
+      `${process.env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json`,
+      {
+        headers: new Headers({
+          "X-Shopify-Access-Token": process.env.SHOPIFY_API_KEY || "",
+        }),
+      }
+    );
+    const { products } = await response.json();
+    return products;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const MainProducts = async () => {
@@ -19,7 +23,7 @@ export const MainProducts = async () => {
   console.log(products);
   return (
     <section className={styles.MainProducts}>
-      <h3>✨ Novedades en productos!</h3>
+      <h3>✨ Nuestros productos mas recientes!</h3>
       <div className={styles.MainProducts__grid}>
         {products?.map((product: any) => {
           const imageSrc = product.images[0].src;
