@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
+import { Hero } from "app/components/home/Hero";
+import { Description } from "app/components/home/Description";
 import { Header } from "app/components/shared/Header";
 import { Footer } from "app/components/shared/Footer";
 import "app/sass/globals.sass";
@@ -23,6 +25,8 @@ export default function RootLayout({
     <html lang="es">
       <body className={ubuntu.className}>
         <Header />
+        <Hero />
+        <Description />
         {children}
         <Footer />
       </body>
